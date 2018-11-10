@@ -1,0 +1,44 @@
+.stat {
+  border-radius: $r;
+  padding: $sp-default $sp-gap $sp-default $sp-default;
+
+  &--overview {
+    box-shadow: 0 .125rem 1.5rem 0 $c-sh-default;
+  }
+
+  &--period {
+    color: $c-text-inverted;
+  }
+
+  &--today {
+    background: $c-bg-today;
+  }
+
+  &--week {
+    background: $c-bg-week;
+  }
+
+  &--month {
+    background: $c-bg-month;
+  }
+
+  &__count {
+    font-weight: $fw-attractive;
+    font-size: $fs-giant;
+    padding-bottom: $sp-gap;
+
+    &--secondary {
+      padding-top: $sp-gap;
+      font-size: $fs-big;
+    }
+  }
+
+  &__description {
+    font-size: $fs-small;
+    font-weight: $fw-accent;
+
+    &:first-child {
+      padding-bottom: $sp-gap;
+    }
+  }
+}

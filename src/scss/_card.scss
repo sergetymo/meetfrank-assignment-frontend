@@ -1,0 +1,40 @@
+.card {
+  display: block;
+  scroll-snap-align: center;
+
+  &--half {
+    padding: $sp-default $sp-gap;
+    width: calc(60vw - #{$sp-gap * 4});
+    min-width: calc(60vw - #{$sp-gap * 4});
+
+    &:first-child {
+      padding-left: $sp-default;
+      width: calc(60vw - #{$sp-gap * 2});
+      min-width: calc(60vw - #{$sp-gap * 2});
+    }
+
+    &:last-child {
+      padding-right: $sp-default;
+      width: calc(60vw - #{$sp-gap * 2});
+      min-width: calc(60vw - #{$sp-gap * 2});
+    }
+  }
+
+  &--full {
+    padding: $sp-default $sp-gap;
+    width: calc(100vw - #{$sp-gap * 4});
+    min-width: calc(100vw - #{$sp-gap * 4});
+
+    &:first-child {
+      padding-left: $sp-default;
+      width: calc(100vw - #{$sp-gap * 2});
+      min-width: calc(100vw - #{$sp-gap * 2});
+    }
+
+    &:last-child {
+      padding-right: $sp-default;
+      width: calc(100vw - #{$sp-gap * 2});
+      min-width: calc(100vw - #{$sp-gap * 2});
+    }
+  }
+}

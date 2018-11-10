@@ -1,0 +1,9 @@
+.section {
+  padding: 0 0 $sp-big 0;
+
+  &__header {
+    padding: 0 $sp-default;
+    font-size: $fs-big;
+    font-weight: $fw-attractive;
+  }
+}

@@ -1,0 +1,29 @@
+@font-face {
+  font-family: Walsheim;
+  src: url('./fonts/gt-walsheim-bold.eot');
+  src: url('./fonts/gt-walsheim-bold.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/gt-walsheim-bold.woff') format('woff'),
+    url('./fonts/gt-walsheim-bold.ttf') format('truetype'),
+    url('./fonts/gt-walsheim-bold.svg') format('svg');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Walsheim;
+  src: url('./fonts/gt-walsheim-medium.eot');
+  src: url('./fonts/gt-walsheim-medium.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/gt-walsheim-medium.woff') format('woff'),
+    url('./fonts/gt-walsheim-medium.ttf') format('truetype'),
+    url('./fonts/gt-walsheim-medium.svg') format('svg');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Walsheim;
+  src: url('./fonts/gt-walsheim.eot');
+  src: url('./fonts/gt-walsheim.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/gt-walsheim.woff') format('woff'),
+    url('./fonts/gt-walsheim.ttf') format('truetype'),
+    url('./fonts/gt-walsheim.svg') format('svg');
+  font-weight: 400;
+}

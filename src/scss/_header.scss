@@ -1,0 +1,12 @@
+.header {
+  padding: 4 * $sp-default $sp-default 2 * $sp-default;
+
+  &__text {
+    font-size: $fs-huge;
+    font-weight: $fw-attractive;
+    color: $c-text-dark;
+    border-bottom: 1px solid $c-brd-default;
+    line-height: 1;
+    padding: 0 0 $sp-default 0;
+  }
+}
