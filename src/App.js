@@ -10,7 +10,7 @@ class App extends Component {
         <main>
           <section className="section">
             <h2 className="section__header">Overview</h2>
-            <div className="deck">
+            <div className="section__deck">
               <article className="card card--half">
                 <dl className="stat stat--overview">
                   <dd className="stat__count">101</dd>
@@ -27,7 +27,7 @@ class App extends Component {
           </section>
           <section className="section">
             <h2 className="section__header">Purchases</h2>
-            <div className="deck">
+            <div className="section__deck">
               <article className="card card--full">
                 <dl className="stat stat--period stat--today">
                   <dt className="stat__description">Today</dt>
