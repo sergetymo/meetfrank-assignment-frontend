@@ -10,8 +10,9 @@
     color: $c-text-inverted;
   }
 
-  &--today {
-    background: $c-bg-today;
+  &--tilltoday,
+  &--day {
+    background: $c-bg-day;
   }
 
   &--week {

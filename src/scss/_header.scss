@@ -2,8 +2,12 @@
   padding: 4 * $sp-default $sp-default 2 * $sp-default;
 
   &__text {
+    border: none;
+    -webkit-appearance: none;
+    width: 100%;
     font-size: $fs-huge;
     font-weight: $fw-attractive;
+    font-family: inherit;
     color: $c-text-dark;
     border-bottom: 1px solid $c-brd-default;
     line-height: 1;

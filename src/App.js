@@ -1,59 +1,62 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import Section from './components/Section'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoading: true,
+      data: {}
+    }
+  }
+
+  update(date = undefined) {
+    this.setState({isLoading: true})
+    const q = date ? '?date='+date : ''
+    fetch('http://kenneth.local:3002/api/stats' + q)
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          isLoading: false,
+          data: json.data
+        })
+      })
+  }
+
+  componentDidMount() {
+    this.update()
+  }
+
+  onDateChange(event) {
+    this.update(event.target.value)
+  }
+
   render() {
+    if (this.state.isLoading) return <p>Loading...</p>
+
     return (
       <div className="root">
         <header className="header">
-          <h1 className="header__text">15 December 2017</h1>
+          <input type="date" className="header__text"
+            defaultValue={this.state.data.dates.current || '2017-12-15'}
+            min={this.state.data.dates.min}
+            max={this.state.data.dates.max}
+            onBlur={this.onDateChange.bind(this)}
+          />
         </header>
         <main>
-          <section className="section">
-            <h2 className="section__header">Overview</h2>
-            <div className="section__deck">
-              <article className="card card--half">
-                <dl className="stat stat--overview">
-                  <dd className="stat__count">101</dd>
-                  <dt className="stat__description">active buyers</dt>
-                </dl>
-              </article>
-              <article className="card card--half">
-                <dl className="stat stat--overview">
-                  <dd className="stat__count">48</dd>
-                  <dt className="stat__description">inactive</dt>
-                </dl>
-              </article>
-            </div>
-          </section>
-          <section className="section">
-            <h2 className="section__header">Purchases</h2>
-            <div className="section__deck">
-              <article className="card card--full">
-                <dl className="stat stat--period stat--today">
-                  <dt className="stat__description">Today</dt>
-                  <dd className="stat__count">18 people</dd>
-                  <dd className="stat__count stat__count--secondary">48</dd>
-                  <dt className="stat__description">Purchases total</dt>
-                </dl>
-              </article>
-              <article className="card card--full">
-                <dl className="stat stat--period stat--week">
-                  <dt className="stat__description">This week</dt>
-                  <dd className="stat__count">58 people</dd>
-                  <dd className="stat__count stat__count--secondary">312</dd>
-                  <dt className="stat__description">Purchases total</dt>
-                </dl>
-              </article>
-              <article className="card card--full">
-                <dl className="stat stat--period stat--month">
-                  <dt className="stat__description">This month</dt>
-                  <dd className="stat__count">320 people</dd>
-                  <dd className="stat__count stat__count--secondary">882</dd>
-                  <dt className="stat__description">Purchases total</dt>
-                </dl>
-              </article>
-            </div>
-          </section>
+          <Section
+            title="Users"
+            cardType="activity"
+            data={this.state.data.activities}
+            isToday={this.state.data.dates.today === this.state.data.dates.current}
+          />
+          <Section
+            title="Purchases"
+            cardType="stat"
+            data={this.state.data.stats}
+            isToday={this.state.data.dates.today === this.state.data.dates.current}
+          />
         </main>
       </div>
     );
