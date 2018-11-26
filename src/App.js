@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import Section from './components/Section'
 
-const host = 'http://amaranth.local'
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -15,7 +13,7 @@ class App extends Component {
   update(date = undefined) {
     this.setState({isLoading: true})
     const q = date ? '?date='+date : ''
-    fetch(host + ':3002/api/stats' + q)
+    fetch(`/api/stats${q}`)
       .then(res => res.json())
       .then(json => {
         this.setState({
