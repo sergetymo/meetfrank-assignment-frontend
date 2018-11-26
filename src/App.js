@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Section from './components/Section'
 
+const host = 'http://amaranth.local'
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -13,7 +15,7 @@ class App extends Component {
   update(date = undefined) {
     this.setState({isLoading: true})
     const q = date ? '?date='+date : ''
-    fetch('http://kenneth.local:3002/api/stats' + q)
+    fetch(host + ':3002/api/stats' + q)
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -32,13 +34,15 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.isLoading) return <p>Loading...</p>
+    if (this.state.isLoading) return <p className="loading">Loading...</p>
 
     return (
       <div className="root">
         <header className="header">
-          <input type="date" className="header__text"
-            defaultValue={this.state.data.dates.current || '2017-12-15'}
+          <input
+            type="date"
+            className="header__text"
+            defaultValue={this.state.data.dates.current}
             min={this.state.data.dates.min}
             max={this.state.data.dates.max}
             onBlur={this.onDateChange.bind(this)}
@@ -47,13 +51,13 @@ class App extends Component {
         <main>
           <Section
             title="Users"
-            cardType="activity"
+            type="activity"
             data={this.state.data.activities}
             isToday={this.state.data.dates.today === this.state.data.dates.current}
           />
           <Section
             title="Purchases"
-            cardType="stat"
+            type="stat"
             data={this.state.data.stats}
             isToday={this.state.data.dates.today === this.state.data.dates.current}
           />

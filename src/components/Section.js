@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Card from './Card'
+import Activity from './Activity'
+import Stat from './Stat'
 import PropTypes from 'prop-types'
 
 class Section extends Component {
@@ -9,39 +10,24 @@ class Section extends Component {
         <h2 className="section__header">{this.props.title}</h2>
         <div className="section__deck">
         {
-          Object.keys(this.props.data).map(key => (
-            // TODO: Separate Stat and Activity cards
-            <Card
-              key={`${this.props.title.toLowerCase()}-${key}`}
-              type={this.props.cardType}
-              quantity={
-                this.props.cardType === 'stat'
-                  ? this.props.data[key].users
-                  : this.props.data[key]
-              }
-              description={
-                this.props.cardType === 'stat'
-                  ? 'Purchases total'
-                  : key
-              }
-              secondary={
-                this.props.cardType === 'stat'
-                  ? this.props.data[key].purchases
-                  : null
-              }
-              subject={
-                this.props.cardType === 'stat'
-                  ? 'people'
-                  : null
-              }
-              period={
-                this.props.cardType === 'stat'
-                  ? key
-                  : null
-              }
-              isToday={this.props.isToday}
-            />
-          ))
+          Object.keys(this.props.data).map(key => {
+            if (this.props.type === 'activity') return (
+              <Activity
+                key={`${this.props.title}-${key}`}
+                quantity={this.props.data[key]}
+                description={key}
+              />
+            )
+            return (
+              <Stat
+                key={`${this.props.title}-${key}`}
+                period={key}
+                users={this.props.data[key].users}
+                purchases={this.props.data[key].purchases}
+                isToday={this.props.isToday}
+              />
+            )
+          })
         }
         </div>
       </section>
@@ -51,7 +37,7 @@ class Section extends Component {
 
 Section.propTypes = {
   title: PropTypes.string.isRequired,
-  cardType: PropTypes.oneOf(['activity', 'stat']).isRequired,
+  type: PropTypes.oneOf(['activity', 'stat']).isRequired,
   data: PropTypes.object.isRequired,
   isToday: PropTypes.bool
 }
