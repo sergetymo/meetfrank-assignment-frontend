@@ -1,7 +1,8 @@
 {
-  "name": "stats-dashboard",
-  "version": "0.1.0",
-  "private": true,
+  "name": "meetfrank-assignment-frontend",
+  "version": "1.0.0",
+  "author": "Serge Tymoshenko <serge@tymo.name>",
+  "private": false,
   "dependencies": {
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
